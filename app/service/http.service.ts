@@ -18,11 +18,7 @@ export class HttpService {
 
   usersGet() {
     return this.http.get(this.usersGetUrl)
-          // .map((res:Response) => res.json())
           .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-                             // .toPromise()
-                             // .then(response => response.json().data as Hero[])
-                             // .catch(this.handleError);
   }
 
   userAdd(obj) {

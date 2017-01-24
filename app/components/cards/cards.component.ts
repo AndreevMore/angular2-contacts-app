@@ -1,32 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response} from '@angular/http';
 
+import { User } from '../../models/user';
 
-import { User } from './share/user';
-import { HttpService } from './share/http.service';
+import { HttpService }   from '../../service/http.service';
   
 
 @Component({
-    selector: 'users-card',
-    template: `<h3>Users card view</h3>
+    selector: 'cards',
+    template: `
+    			<div>
+    				<h2>cards.component.ts</h2>
+    				
+    				<h3>Users card view</h3>
 
-
-				<div class=" col-xs-12 col-md-12"  >
 					
-						<div class="flip-card active-card" *ngFor="let user of users; let k = index  " >
-						  <div class="card label-info">
-						    <h6>{{ k+1 }}</h6>
-						  </div>
-						  <div class="well">
+					<div class="flip-card active-card" *ngFor="let user of users; let k = index  " >
+						<div class="card label-info">
+					    	<h6>{{ k+1 }}</h6>
+						</div>
+						<div class="well">
 						    <h1>Card {{user._id}}</h1>
 						    <h2> {{user.name}}</h2>
 						    <h3> {{user.password}}</h3>
 						    <h4> {{user.email}}</h4>
-						  </div>
 						</div>
+					</div>
 
 				</div>
-
 
     `,
     styles: [`
@@ -125,9 +126,7 @@ import { HttpService } from './share/http.service';
     
 })
 
-export class UsersCardComponent implements OnInit { 
-	
-
+export class CardsComponent implements OnInit { 
 
 	currentSortString: string = "name";
 	searchVal: string = "";
@@ -146,8 +145,7 @@ export class UsersCardComponent implements OnInit {
             .subscribe((data: Response) => {
             	this.users=data.json();
         		this.usersCount=this.users.length;
-        		// this.state.notifyDataChanged('users:count',this.users.length);
-        		console.log('from app - ' + this.usersCount);
+        		// console.log('from app - ' + this.usersCount);
             },
         err => console.error(err),
         () => console.log('Contact list fetched...')

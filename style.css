@@ -1,0 +1,19 @@
+h2 {
+    text-decoration: underline; ;
+}
+nav, div {
+    text-align: center;
+    border: 1px solid #08a3a4;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+input {
+    text-align: center;
+    width: 60%;
+}
+
+th{
+
+}

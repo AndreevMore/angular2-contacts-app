@@ -2,38 +2,38 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule  } from '@angular/http';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { NavComponent }   from './nav.component';
-import { AppComponent }   from './app.component';
-import { UsersAddDeleteComponent }   from './users.add.delete.component';
-import { UsersCardComponent }   from './users.card.component';
-import { UsersLoadUploadComponent }   from './users.load.upload.component';
-import { SearchComponent }   from './apps/app.search';
 
-import { NotFoundComponent }   from './not-found.component';
+import { GridComponent }   from './components/grid/grid.component';
+import { NavigationComponent }   from './components/navigation/navigation.component';
+import { CardsComponent }   from './components/cards/cards.component';
+import { BackupComponent }   from './components/backup/backup.component';
+import { SearchComponent }   from './components/search/search.component';
+import { EditorComponent }   from './components/editor/editor.component';
+import { NotFoundComponent }   from './components/notFound/not-found.component';
 
-import { User } from './share/user';
-import { HttpService }   from './share/http.service';
-import { SearchPipe }   from './share/searchPipe';
-import { SortPipe }   from './share/sortPipe';
-import { GlobalState }   from './global-state';
 
+import { GlobalState }   from './service/global-state';
+import { HttpService }   from './service/http.service';
+import { User } from './models/user';
+import { SearchPipe }   from './pipes/searchPipe';
+import { SortPipe }   from './pipes/sortPipe';
 
 const appRoutes: Routes = [
-    { path: '', component: AppComponent},
-    { path: 'addDelete', component: UsersAddDeleteComponent},
-    { path: 'loadUpload', component: UsersLoadUploadComponent},
-    { path: 'cards', component: UsersCardComponent},
+    { path: '', component: GridComponent},
+    { path: 'edit', component: EditorComponent},
+    { path: 'backup', component: BackupComponent},
+    { path: 'cards', component: CardsComponent},
     // { path: '**', component: NotFoundComponent }
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
     imports:      [ BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule, JsonpModule  ],
-    declarations: [ SortPipe, SearchPipe, SearchComponent, NavComponent, AppComponent, UsersLoadUploadComponent, UsersCardComponent , UsersAddDeleteComponent, NotFoundComponent ],
+    declarations: [ SortPipe, SearchPipe, SearchComponent, NavigationComponent, GridComponent, BackupComponent, CardsComponent , EditorComponent, NotFoundComponent ],
     providers: 	  [ HttpService, User, GlobalState ],
-    bootstrap:    [ NavComponent ]
+    bootstrap:    [ NavigationComponent ]
 })
 
 export class AppModule { }
