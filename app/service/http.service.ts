@@ -14,6 +14,7 @@ export class HttpService {
   private userAddUrl = 'http://dev-brainworks.rhcloud.com/api/users/create'; 
   private headers = new Headers({'Content-Type': 'application/json'});
   public usersCount:number;
+
 	constructor(private http:Http) {}
 
   usersGet() {
